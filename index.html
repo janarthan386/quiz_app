@@ -9,6 +9,33 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header text-center bg-primary text-white">
+            <h3>Online Quiz Application</h3>
+        </div>
+
+        <div class="card-body">
+            <div class="d-flex justify-content-between mb-3">
+                <span><b>Question:</b> <span id="questionNumber">1</span>/5</span>
+                <span><b>Time:</b> <span id="timer">20</span>s</span>
+            </div>
+
+            <h5 id="questionText"></h5>
+
+            <div class="list-group mt-3">
+                <button class="list-group-item list-group-item-action option" onclick="checkAnswer(0)"></button>
+                <button class="list-group-item list-group-item-action option" onclick="checkAnswer(1)"></button>
+                <button class="list-group-item list-group-item-action option" onclick="checkAnswer(2)"></button>
+                <button class="list-group-item list-group-item-action option" onclick="checkAnswer(3)"></button>
+            </div>
+        </div>
+
+        <div class="card-footer text-center">
+            <button class="btn btn-primary" onclick="nextQuestion()">Next</button>
+        </div>
+    </div>
+</div>
 
 
 <script src="script.js"></script>
