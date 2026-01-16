@@ -1,42 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Online Quiz App</title>
+<meta charset="UTF-8">
+<title>Quiz</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
-<body>
-<div class="container mt-5">
-    <div class="card shadow">
-        <div class="card-header text-center bg-primary text-white">
-            <h3>Online Quiz Application</h3>
-        </div>
+<body style="background-image: url('./assets/img1.png'); 
+             background-size: cover; 
+             background-repeat: no-repeat; 
+             background-position: center;">
 
-        <div class="card-body">
-            <div class="d-flex justify-content-between mb-3">
-                <span><b>Question:</b> <span id="questionNumber">1</span>/5</span>
-                <span><b>Time:</b> <span id="timer">20</span>s</span>
-            </div>
+<div class="quiz-box">
 
-            <h5 id="questionText"></h5>
 
-            <div class="list-group mt-3">
-                <button class="list-group-item list-group-item-action option" onclick="checkAnswer(0)"></button>
-                <button class="list-group-item list-group-item-action option" onclick="checkAnswer(1)"></button>
-                <button class="list-group-item list-group-item-action option" onclick="checkAnswer(2)"></button>
-                <button class="list-group-item list-group-item-action option" onclick="checkAnswer(3)"></button>
-            </div>
-        </div>
-
-        <div class="card-footer text-center">
-            <button class="btn btn-primary" onclick="nextQuestion()">Next</button>
-        </div>
+    <div class="quiz-header d-flex justify-content-between">
+        <span id="userName"></span>
+        <span id="timer">20</span>
     </div>
-</div>
 
+    
+    <p class="mt-3">
+        <b>Question <span id="qNo"></span>/5</b>
+    </p>
+
+    <h5 id="question"></h5>
+
+    
+    <div id="options"></div>
+
+    <button class="btn btn-success mt-3" onclick="nextQuestion()">Next</button>
+
+</div>
 
 <script src="script.js"></script>
 </body>

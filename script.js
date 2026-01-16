@@ -1,138 +1,94 @@
-
-function user(){
-    
-
-
- let correctUsername = "janarthan";
-let correctPassword = "12345";
-
-    let userName = document.getElementById('name').value;
-    let password = document.getElementById('password').value;
-
-    let user={
-        name1:userName,
-        password:password
-    }
-
-    if(name1===correctUsername && password==correctPassword){
-       alert="login Succesfully";
-        window.location.href = "index.html";
-    }else{
-        document.getElementById("massage").innerText = "Invalid Username or Password";
-    }
-    
-
-    getInput.push(user);
-    
-}
-
-
-
 const quiz = [
     {
-        question: "What does HTML stand for?",
+        q: "What does HTML stand for?",
         options: [
             "Hyper Text Markup Language",
-            "High Text Machine Language",
-            "Hyperlinks Text Mark Language",
-            "Home Tool Markup Language"
+            "Hyper Text Preprocessor",
+            "Hyper Text Multiple Language",
+            "Hyper Tool Multi Language"
         ],
-        answer: 0
+        ans: 0
     },
     {
-        question: "Which language is used for styling web pages?",
-        options: ["HTML", "JQuery", "CSS", "XML"],
-        answer: 2
+        q: "CSS is used for?",
+        options: ["Logic", "Styling", "Database", "Server"],
+        ans: 1
     },
     {
-        question: "Which is not a JavaScript framework?",
-        options: ["React", "Angular", "Vue", "Django"],
-        answer: 3
+        q: "JS stands for?",
+        options: ["Java Source", "Java Script", "Just Script", "J Script"],
+        ans: 1
     },
     {
-        question: "Which symbol is used for comments in JavaScript?",
-        options: ["//", "<!-- -->", "#", "**"],
-        answer: 0
+        q: "Bootstrap is?",
+        options: ["Framework", "Language", "Server", "Browser"],
+        ans: 0
     },
     {
-        question: "Which method is used to fetch data in JS?",
-        options: ["fetch()", "get()", "call()", "request()"],
-        answer: 0
+        q: "Which is frontend?",
+        options: ["HTML", "PHP", "Node", "MySQL"],
+        ans: 0
     }
 ];
 
-let currentIndex = 0;
+let index = 0;
 let score = 0;
-let timeLeft = 20;
+let time = 20;
 let timer;
 
-const questionText = document.getElementById("questionText");
-const options = document.querySelectorAll(".option");
-const timerDisplay = document.getElementById("timer");
-const questionNumber = document.getElementById("questionNumber");
+document.getElementById("userName").innerText =
+    localStorage.getItem("username");
 
 loadQuestion();
 startTimer();
 
-function loadQuestion() {
-    questionText.innerText = quiz[currentIndex].question;
-    questionNumber.innerText = currentIndex + 1;
+function loadQuestion(){
+    document.getElementById("qNo").innerText = index + 1;
+    document.getElementById("question").innerText = quiz[index].q;
 
-    options.forEach((btn, index) => {
-        btn.innerText = quiz[currentIndex].options[index];
-        btn.classList.remove("active");
+    let optHTML = "";
+    quiz[index].options.forEach((opt, i) => {
+        optHTML += `
+            <div class="form-check">
+                <input type="radio" name="opt" value="${i}">
+                ${opt}
+            </div>
+        `;
     });
 
-    resetTimer();
+    document.getElementById("options").innerHTML = optHTML;
 }
 
-function checkAnswer(selected) {
-    if (selected === quiz[currentIndex].answer) {
+function nextQuestion(){
+    let selected = document.querySelector('input[name="opt"]:checked');
+
+    if(selected && selected.value == quiz[index].ans){
         score++;
     }
-    nextQuestion();
-}
 
-function nextQuestion() {
     clearInterval(timer);
+    index++;
 
-    if (currentIndex < quiz.length - 1) {
-        currentIndex++;
+    if(index < quiz.length){
+        time = 20;
         loadQuestion();
         startTimer();
-    } else {
-        showResult();
+    }else{
+        alert("Quiz Finished\nScore: " + score);
+        location.reload();
     }
 }
 
-function startTimer() {
-    timeLeft = 20;
-    timerDisplay.innerText = timeLeft;
+function startTimer(){
+    document.getElementById("timer").innerText = time;
 
     timer = setInterval(() => {
-        timeLeft--;
-        timerDisplay.innerText = timeLeft;
+        time--;
+        document.getElementById("timer").innerText = time;
 
-        if (timeLeft === 0) {
+        if(time == 0){
             nextQuestion();
         }
-    }, 1000);
+    },1000);
 }
-
-function resetTimer() {
-    clearInterval(timer);
-    timeLeft = 20;
-    timerDisplay.innerText = timeLeft;
-}
-
-function showResult() {
-    document.querySelector(".card-body").innerHTML = `
-        <h3 class="text-center">Quiz Completed 🎉</h3>
-        <p class="text-center">Your Score: <b>${score} / ${quiz.length}</b></p>
-        <div class="text-center">
-            <button class="btn btn-success" onclick="location.reload()">Restart Quiz</button>
-        </div>
-    `;
-}
-
 
