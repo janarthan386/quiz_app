@@ -1,3 +1,33 @@
+
+function user(){
+    
+
+
+ let correctUsername = "janarthan";
+let correctPassword = "12345";
+
+    let userName = document.getElementById('name').value;
+    let password = document.getElementById('password').value;
+
+    let user={
+        name1:userName,
+        password:password
+    }
+
+    if(name1===correctUsername && password==correctPassword){
+       alert="login Succesfully";
+        window.location.href = "index.html";
+    }else{
+        document.getElementById("massage").innerText = "Invalid Username or Password";
+    }
+    
+
+    getInput.push(user);
+    
+}
+
+
+
 const quiz = [
     {
         question: "What does HTML stand for?",
