@@ -1,4 +1,46 @@
 
+body{
+    display: flex;
+    justify-content: center;
+}
+.mother {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(73, 115, 211);
+  width: 500px;
+  height: 500px;
+  box-shadow: 5px 5px 10px rgb(76, 75, 75);
+  border: 2px solid black;
+  border: none;
+  border-radius: 10px;
+}
+
+.inp {
+    font-style: oblique;
+  width: 400px;
+  height: 30px;
+  border-radius: 5px;
+}
+
+.btn {
+margin-left: 160px;
+  width: 70px;
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+
+}
+
+h1{
+    font-style: oblique;
+    display: flex;
+    justify-content: center;
+}
+
+
 body {
     background-color: #f5f5f5;
 }
